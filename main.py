@@ -20,7 +20,8 @@ SMTP_PORT = 465
 
 
 entry_strategies = {'strategy_1': ['Bullish_candle', 'Candle_BB_breakout', 'RSI_breakout_y'],
-                    'strategy_7': ['Bullish_candle', 'RSI_crossover_y', 'EMA_50_breakout', 'ADX_trending'],}
+                    'strategy_7': ['Bullish_candle', 'RSI_crossover_y', 'EMA_50_breakout', 'ADX_trending'],
+                    'strategy_8': ['RSI_breakout'],}
 exit_strategy = ['BB_exit']
 
 forecast = 5

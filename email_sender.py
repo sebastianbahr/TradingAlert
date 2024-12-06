@@ -6,16 +6,16 @@ from email.message import EmailMessage
 
 class EmailSender:
     
-  def __init__(self, entries: pd.DataFrame, exits: pd.DataFrame, server: str, port: int, email_pw: str, sender: str, receiver: str):
+  def __init__(self, entries: pd.DataFrame, exits: pd.DataFrame, server: str, port: int, email_pw: str, sender: str, recipients: str):
       self.entries = entries
       self.exits = exits
       self.server = server
       self.port = port
       self.email_pw = email_pw
       self.sender = sender
-      self.receiver = receiver
+      self.recipients = recipients
         
-
+        
   def create_table(self, df: pd.DataFrame, entry: bool):
     # create html table that is used in email
     table = []
@@ -118,7 +118,7 @@ class EmailSender:
     try:
         email = EmailMessage()
         email["From"] = self.sender
-        email["To"] = self.receiver  # sending email to myself
+        email["To"] = (', ').join(self.recipients.split(','))  # sending email to myself
         email["Subject"] = subject
         email.set_content("This is a plain text fallback in case HTML is not supported.")
         email.add_alternative(message_body, subtype='html')
